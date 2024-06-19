@@ -1,14 +1,12 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []
-        closeToOpen = {")": "(", "}": "{", "]": "["}
-
+        answer = []
+        closeToOpen = {"}": "{", "]": "[", ")": "("}
         for c in s:
             if c not in closeToOpen:
-                stack.append(c)
+                answer.append(c)
                 continue
-            if not stack or stack[-1] != closeToOpen[c]:
+            if not answer or answer[-1] != closeToOpen[c]:
                 return False
-            stack.pop()
-
-        return not stack
+            answer.pop()
+        return not answer
